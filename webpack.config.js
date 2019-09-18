@@ -19,7 +19,7 @@ const clientConfig = {
         ]
       },
       {
-        test: /\.styl$/,
+        test: /\.styl(us)?$/,
         use: [
           'vue-style-loader',
           { loader: 'css-loader' },
@@ -38,8 +38,21 @@ const clientConfig = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-          { loader: 'babel-loader' }
+          {
+            loader: 'babel-loader',
+            options: {
+              "babelrc": false,
+              "plugins": [
+                  "@babel/plugin-syntax-dynamic-import"
+              ]
+            }
+          }
         ]
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: { appendTsSuffixTo: [/\.vue$/] }
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -69,7 +82,7 @@ const clientConfig = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['.ts', '.js', '.vue', '.json']
   },
   externals: [meteorExternals()],
   devServer: {

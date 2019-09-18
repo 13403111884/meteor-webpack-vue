@@ -1,30 +1,18 @@
-// Libs
-import { Meteor } from 'meteor/meteor';
-import Vue from 'vue';
-import { Accounts } from 'meteor/accounts-base'
+import Vue from 'vue'
+import { Meteor } from 'meteor/meteor'
 
 import VueTracker from 'vue-meteor-tracker'
-import VueMeta from 'vue-meta'
-import '../imports/ui/blaze'
-// import App from '../imports/ui/App.vue'
-import App from '../imports/client/App.vue'
-
-window.AccountsConfigSet = window.AccountsConfigSet || true
-if(!window.AccountsConfigSet){
-  Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_AND_EMAIL',
-  })
-}
+import store from './../imports/client/store'
+import router from './../imports/client/router'
+import App from './../imports/client/App.vue'
 
 
 Vue.use(VueTracker)
 
-Vue.use(VueMeta)
-
-// Main app
-
 Meteor.startup(() => {
   new Vue({
+    router,
+    store,
     render: h => h(App),
-  }).$mount('app');
-});
+  }).$mount('app')
+})

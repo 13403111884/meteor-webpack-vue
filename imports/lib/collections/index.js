@@ -1,1 +1,1 @@
-export const Messages = new Mongo.Collection('messages')
+Time = new Mongo.Collection('Time')

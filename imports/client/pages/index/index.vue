@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import '/imports/lib/collections/Time'
+import './../../../lib/collections'
 
 export default {
   data() {
@@ -34,7 +34,11 @@ export default {
       itme: new Date()
     }
   },
-  methods: {  
+  mounted () {
+    this.init()
+  },
+  methods: {
+    init () {},
     updateTime() {
       Meteor.call('UpdateTime')
     },

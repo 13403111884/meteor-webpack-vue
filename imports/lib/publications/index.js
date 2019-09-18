@@ -1,3 +1,3 @@
-Meteor.publish('Messages', function () {
-  return Messages.find({})
+Meteor.publish('Time', function () {
+  return Time.find({})
 })

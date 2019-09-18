@@ -1,5 +1,7 @@
 Meteor.methods({
-  UpdateMessages() {
-    Messages.upsert('Messages', { $set: { time: new Date() } })
+  UpdateTime() {
+    Time.upsert('Time', {
+      $set: { time: new Date() }
+    })
   },
 })
